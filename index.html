@@ -1,1 +1,368 @@
-code lol
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChromaShare &mdash; Social Media Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="top-nav" aria-label="Primary navigation">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">◎</span>
+        <span class="brand-name">ChromaShare</span>
+      </div>
+      <label class="search" aria-label="Search posts and people">
+        <input
+          type="search"
+          id="global-search"
+          placeholder="Search"
+          autocomplete="off"
+        />
+        <span class="search-icon" aria-hidden="true">🔍</span>
+      </label>
+      <nav class="nav-actions" aria-label="Primary actions">
+        <button class="icon-button" data-action="home" aria-label="Home">
+          🏠
+        </button>
+        <button
+          class="icon-button"
+          data-action="notifications"
+          aria-expanded="false"
+          aria-controls="notifications-panel"
+          aria-label="View notifications"
+        >
+          🔔
+        </button>
+        <button
+          class="icon-button"
+          data-action="messages"
+          aria-expanded="false"
+          aria-controls="messages-panel"
+          aria-label="Open messages"
+        >
+          💬
+        </button>
+        <button
+          class="icon-button create"
+          data-action="create"
+          aria-haspopup="dialog"
+          aria-controls="create-modal"
+          aria-label="Create a new post"
+        >
+          ＋
+        </button>
+        <button class="profile-thumb" aria-label="Open profile">
+          <img src="https://i.pravatar.cc/150?img=32" alt="Your profile" />
+        </button>
+      </nav>
+    </header>
+
+    <main class="layout" aria-live="polite">
+      <aside class="left-rail" aria-label="Main navigation">
+        <section class="profile-card">
+          <img
+            class="profile-photo"
+            src="https://i.pravatar.cc/150?img=32"
+            alt="Profile avatar"
+          />
+          <div class="profile-meta">
+            <h2>@wanderinglight</h2>
+            <p>Visual storyteller &amp; coffee enthusiast</p>
+          </div>
+          <dl class="profile-stats">
+            <div>
+              <dt>Posts</dt>
+              <dd id="profile-post-count">24</dd>
+            </div>
+            <div>
+              <dt>Followers</dt>
+              <dd>18.4K</dd>
+            </div>
+            <div>
+              <dt>Following</dt>
+              <dd>403</dd>
+            </div>
+          </dl>
+          <button class="primary-button" data-action="edit-profile">
+            Edit Profile
+          </button>
+        </section>
+
+        <nav class="main-menu">
+          <h3 class="menu-heading">Browse</h3>
+          <ul>
+            <li><button class="menu-link is-active">Feed</button></li>
+            <li>
+              <button class="menu-link" data-view="explore">Explore</button>
+            </li>
+            <li><button class="menu-link" data-view="reels">Reels</button></li>
+            <li><button class="menu-link" data-view="saved">Saved</button></li>
+            <li>
+              <button class="menu-link" data-view="settings">Settings</button>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="highlights">
+          <h3 class="menu-heading">Highlights</h3>
+          <div class="highlight-grid">
+            <button class="highlight-card" data-highlight="travels">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80"
+                alt="Travel highlight"
+              />
+              <span>Travels</span>
+            </button>
+            <button class="highlight-card" data-highlight="coffee">
+              <img
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=200&q=80"
+                alt="Coffee highlight"
+              />
+              <span>Coffee</span>
+            </button>
+            <button class="highlight-card" data-highlight="studio">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=200&q=80"
+                alt="Studio highlight"
+              />
+              <span>Studio</span>
+            </button>
+            <button class="highlight-card" data-highlight="friends">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80"
+                alt="Friends highlight"
+              />
+              <span>Friends</span>
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <section class="center-column">
+        <section class="stories" aria-label="Stories">
+          <header class="section-heading">
+            <h2>Stories</h2>
+            <button class="text-button" data-action="view-all-stories">
+              View all
+            </button>
+          </header>
+          <div class="story-strip" id="stories"></div>
+        </section>
+
+        <section class="composer" aria-label="Create a story or post">
+          <div class="composer-input">
+            <img
+              src="https://i.pravatar.cc/150?img=32"
+              alt="Profile"
+              class="composer-avatar"
+            />
+            <button class="composer-trigger" data-action="create">
+              Share a moment...
+            </button>
+          </div>
+          <div class="composer-actions">
+            <button class="pill" data-action="add-photo">📷 Photo</button>
+            <button class="pill" data-action="add-video">🎬 Reel</button>
+            <button class="pill" data-action="add-live">🔴 Live</button>
+          </div>
+        </section>
+
+        <section class="feed" id="feed" aria-label="Feed"></section>
+      </section>
+
+      <aside class="right-rail" aria-label="Community and trends">
+        <section class="suggestions">
+          <header>
+            <h3>Suggested for you</h3>
+            <button class="text-button">See all</button>
+          </header>
+          <ul id="suggestions-list"></ul>
+        </section>
+
+        <section class="trending">
+          <header>
+            <h3>Trending tags</h3>
+            <button class="text-button">Refresh</button>
+          </header>
+          <ul id="trending-tags"></ul>
+        </section>
+
+        <section class="live-now">
+          <header>
+            <h3>Live now</h3>
+            <span class="live-badge">LIVE</span>
+          </header>
+          <ul>
+            <li>
+              <button class="live-card" data-live="gallery">
+                <div>
+                  <strong>@galleryhues</strong>
+                  <p>Color grading workshop</p>
+                </div>
+                <span>▶</span>
+              </button>
+            </li>
+            <li>
+              <button class="live-card" data-live="beats">
+                <div>
+                  <strong>@midnightbeats</strong>
+                  <p>Studio jam session</p>
+                </div>
+                <span>▶</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <div
+      class="overlay hidden"
+      id="story-viewer"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="overlay-content">
+        <button
+          class="close-button"
+          data-close="story-viewer"
+          aria-label="Close story"
+        >
+          ✕
+        </button>
+        <div class="story-progress">
+          <div class="story-progress-bar" id="story-progress-bar"></div>
+        </div>
+        <img id="story-viewer-image" alt="Story content" />
+        <footer>
+          <h3 id="story-viewer-user"></h3>
+          <p id="story-viewer-caption"></p>
+        </footer>
+      </div>
+    </div>
+
+    <div
+      class="panel hidden"
+      id="notifications-panel"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="notifications-title"
+    >
+      <header>
+        <h2 id="notifications-title">Notifications</h2>
+        <button class="text-button" data-action="mark-read">
+          Mark all as read
+        </button>
+      </header>
+      <ul id="notifications-list"></ul>
+    </div>
+
+    <div
+      class="panel hidden"
+      id="messages-panel"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="messages-title"
+    >
+      <header>
+        <h2 id="messages-title">Direct Messages</h2>
+        <button class="text-button" data-action="new-message">
+          New message
+        </button>
+      </header>
+      <div class="messages-layout">
+        <aside class="conversation-list" id="conversation-list"></aside>
+        <section class="conversation-view" id="conversation-view">
+          <div class="conversation-placeholder">
+            <h3>Select a conversation</h3>
+            <p>Start chatting with friends and collaborators.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="create-modal" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <header>
+          <h2>Create new post</h2>
+          <button
+            class="close-button"
+            data-close="create-modal"
+            aria-label="Close create modal"
+          >
+            ✕
+          </button>
+        </header>
+        <form id="create-post-form">
+          <label>
+            Photo URL
+            <input type="url" name="photo" placeholder="https://" required />
+          </label>
+          <label>
+            Caption
+            <textarea
+              name="caption"
+              rows="3"
+              placeholder="What's inspiring you today?"
+              required
+            ></textarea>
+          </label>
+          <label>
+            Location
+            <input type="text" name="location" placeholder="Add location" />
+          </label>
+          <button type="submit" class="primary-button">Share</button>
+        </form>
+      </div>
+    </div>
+
+    <template id="post-template">
+      <article class="post">
+        <header class="post-header">
+          <img class="avatar" alt="" />
+          <div>
+            <h3 class="post-user"></h3>
+            <p class="post-meta"></p>
+          </div>
+          <button class="icon-button" aria-label="More options">⋯</button>
+        </header>
+        <figure class="post-media">
+          <img alt="Post image" loading="lazy" />
+        </figure>
+        <div class="post-actions">
+          <div class="post-actions-left">
+            <button class="icon-button like" aria-pressed="false">♡</button>
+            <button class="icon-button comment">💬</button>
+            <button class="icon-button share">✈</button>
+          </div>
+          <button class="icon-button save" aria-pressed="false">🔖</button>
+        </div>
+        <div class="post-likes"></div>
+        <p class="post-caption"></p>
+        <ul class="post-tags"></ul>
+        <section class="post-comments">
+          <h4>Comments</h4>
+          <ul class="comments-list"></ul>
+          <form class="comment-form">
+            <input
+              type="text"
+              name="comment"
+              placeholder="Add a comment"
+              required
+            />
+            <button type="submit">Post</button>
+          </form>
+        </section>
+      </article>
+    </template>
+
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>
